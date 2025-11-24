@@ -1,0 +1,472 @@
+@import '../variables.scss';
+
+.movie-card {
+  position: relative;
+  background: linear-gradient(145deg, $background-card, #1a1a1a);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba($border-color, 0.4);
+  transform: translateZ(0);
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border-color: rgba($primary-color, 0.7);
+    z-index: 10;
+  }
+
+  .movie-card-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .movie-card-image {
+    position: relative;
+    padding-top: 150%; // 2:3 aspect ratio
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .favorite-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, rgba($background-dark, 0.95), rgba(#1a1a1a, 0.95));
+      color: $text-gray;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      z-index: 2;
+      border: 1px solid rgba($border-color, 0.6);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(5px);
+
+      &:hover {
+        background: linear-gradient(145deg, rgba($background-dark, 1), rgba(#2a2a2a, 1));
+        color: $text-light;
+        transform: scale(1.2) rotate(10deg);
+        border-color: $primary-color;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      }
+
+      &.active {
+        color: #ff4d4d;
+        background: linear-gradient(145deg, rgba($background-dark, 1), rgba(#2a2a2a, 1));
+        border-color: #ff4d4d;
+        box-shadow: 0 6px 15px rgba(255, 77, 77, 0.4);
+      }
+
+      svg {
+        fill: currentColor;
+        width: 22px;
+        height: 22px;
+      }
+    }
+
+    .movie-card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+      padding: 30px 25px 25px;
+      transform: translateY(100%);
+      transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+      z-index: 1;
+
+      &.visible {
+        transform: translateY(0);
+      }
+
+      .movie-card-info {
+        .movie-card-title {
+          color: $text-light;
+          font-size: 1.3rem;
+          margin-bottom: 15px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-weight: 700;
+          text-shadow: 0 3px 6px rgba(0, 0, 0, 0.6);
+          letter-spacing: -0.3px;
+        }
+
+        .movie-card-meta {
+          display: flex;
+          justify-content: space-between;
+          color: $text-gray;
+          font-size: 1.1rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .movie-card-content {
+    padding: 30px 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    .movie-card-title {
+      margin: 0 0 25px 0;
+      font-size: 1.6rem;
+      font-weight: 800;
+      flex-grow: 1;
+      color: $text-light;
+      line-height: 1.3;
+      text-align: center;
+      transition: color 0.3s ease;
+      background: linear-gradient(90deg, #fff, #1e90ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+
+      a {
+        color: $text-light;
+        transition: color 0.3s ease;
+        text-decoration: none;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+
+    .movie-card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      
+      span {
+        font-size: 1.1rem;
+        color: $text-gray;
+        padding: 12px 18px;
+        border-radius: 10px;
+        background-color: rgba($background-darker, 0.8);
+        text-align: center;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: 1px solid rgba($border-color, 0.4);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        
+        &.movie-genre {
+          color: #1db954;
+          font-weight: 700;
+          background: linear-gradient(145deg, rgba(#1db954, 0.15), rgba(#168840, 0.1));
+          border: 1px solid rgba(#1db954, 0.4);
+          box-shadow: 0 4px 8px rgba(29, 185, 84, 0.2);
+        }
+        
+        &.movie-year {
+          color: #1e90ff;
+          font-weight: 700;
+          background: linear-gradient(145deg, rgba(#1e90ff, 0.15), rgba(#187bcd, 0.1));
+          border: 1px solid rgba(#1e90ff, 0.4);
+          box-shadow: 0 4px 8px rgba(30, 144, 255, 0.2);
+        }
+        
+        &.movie-rating {
+          color: #ffc107;
+          font-weight: 800;
+          background: linear-gradient(145deg, rgba(#ffc107, 0.15), rgba(#e0a800, 0.1));
+          border: 1px solid rgba(#ffc107, 0.4);
+          box-shadow: 0 4px 8px rgba(255, 193, 7, 0.2);
+        }
+      }
+    }
+  }
+
+  &:hover {
+    .movie-card-image {
+      img {
+        transform: scale(1.12);
+      }
+      
+      .movie-card-overlay {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: 1440px) {
+    border-radius: 14px;
+    
+    .movie-card-content {
+      padding: 27px 22px;
+      
+      .movie-card-title {
+        font-size: 1.5rem;
+        margin-bottom: 22px;
+      }
+      
+      .movie-card-meta {
+        gap: 13px;
+        
+        span {
+          font-size: 1.05rem;
+          padding: 11px 16px;
+          border-radius: 9px;
+        }
+      }
+    }
+    
+    .movie-card-image {
+      .favorite-button {
+        width: 42px;
+        height: 42px;
+        top: 18px;
+        right: 18px;
+        
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+      
+      .movie-card-overlay {
+        padding: 27px 22px 22px;
+        
+        .movie-card-info {
+          .movie-card-title {
+            font-size: 1.2rem;
+            margin-bottom: 13px;
+          }
+          
+          .movie-card-meta {
+            font-size: 1.05rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    border-radius: 12px;
+    
+    .movie-card-content {
+      padding: 25px 20px;
+      
+      .movie-card-title {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+      }
+      
+      .movie-card-meta {
+        gap: 12px;
+        
+        span {
+          font-size: 1rem;
+          padding: 10px 15px;
+          border-radius: 8px;
+        }
+      }
+    }
+    
+    .movie-card-image {
+      .favorite-button {
+        width: 40px;
+        height: 40px;
+        top: 16px;
+        right: 16px;
+        
+        svg {
+          width: 19px;
+          height: 19px;
+        }
+      }
+      
+      .movie-card-overlay {
+        padding: 25px 20px 20px;
+        
+        .movie-card-info {
+          .movie-card-title {
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+          }
+          
+          .movie-card-meta {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    border-radius: 10px;
+    
+    .movie-card-content {
+      padding: 22px 18px;
+      
+      .movie-card-title {
+        font-size: 1.3rem;
+        margin-bottom: 18px;
+      }
+      
+      .movie-card-meta {
+        gap: 10px;
+        
+        span {
+          font-size: 0.95rem;
+          padding: 9px 13px;
+          border-radius: 7px;
+        }
+      }
+    }
+    
+    .movie-card-image {
+      .favorite-button {
+        width: 38px;
+        height: 38px;
+        top: 14px;
+        right: 14px;
+        
+        svg {
+          width: 18px;
+          height: 18px;
+        }
+      }
+      
+      .movie-card-overlay {
+        padding: 22px 18px 18px;
+        
+        .movie-card-info {
+          .movie-card-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+          }
+          
+          .movie-card-meta {
+            font-size: 0.95rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 8px;
+    
+    .movie-card-content {
+      padding: 20px 15px;
+      
+      .movie-card-title {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+      }
+      
+      .movie-card-meta {
+        gap: 8px;
+        
+        span {
+          font-size: 0.9rem;
+          padding: 8px 12px;
+          border-radius: 6px;
+        }
+      }
+    }
+    
+    .movie-card-image {
+      .favorite-button {
+        width: 35px;
+        height: 35px;
+        top: 12px;
+        right: 12px;
+        
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+      
+      .movie-card-overlay {
+        padding: 20px 15px 15px;
+        
+        .movie-card-info {
+          .movie-card-title {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+          }
+          
+          .movie-card-meta {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 360px) {
+    border-radius: 6px;
+    
+    .movie-card-content {
+      padding: 18px 12px;
+      
+      .movie-card-title {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+      }
+      
+      .movie-card-meta {
+        gap: 6px;
+        
+        span {
+          font-size: 0.85rem;
+          padding: 7px 10px;
+          border-radius: 5px;
+        }
+      }
+    }
+    
+    .movie-card-image {
+      .favorite-button {
+        width: 32px;
+        height: 32px;
+        top: 10px;
+        right: 10px;
+        
+        svg {
+          width: 14px;
+          height: 14px;
+        }
+      }
+      
+      .movie-card-overlay {
+        padding: 18px 12px 12px;
+        
+        .movie-card-info {
+          .movie-card-title {
+            font-size: 1rem;
+            margin-bottom: 6px;
+          }
+          
+          .movie-card-meta {
+            font-size: 0.85rem;
+          }
+        }
+      }
+    }
+  }
+}

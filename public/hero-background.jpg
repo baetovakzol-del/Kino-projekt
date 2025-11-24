@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <rect width="1200" height="600" fill="#1a1a1a"/>
+  <rect x="200" y="100" width="800" height="400" fill="#2a2a2a" rx="20"/>
+  <circle cx="600" cy="300" r="100" fill="#e50914" opacity="0.7"/>
+  <text x="600" y="310" font-family="Arial, sans-serif" font-size="40" fill="#ffffff" text-anchor="middle">Hero Background</text>
+</svg>

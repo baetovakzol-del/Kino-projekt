@@ -1,0 +1,49 @@
+@import '../variables.scss';
+
+.login-page {
+  padding: 60px 0;
+  background: linear-gradient(135deg, $background-dark 0%, #1a1a1a 100%);
+  min-height: calc(100vh - $header-height - $footer-height);
+  
+  .login-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 20px;
+    
+    h1 {
+      text-align: center;
+      color: $text-light;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      background: linear-gradient(90deg, $primary-color, #ff6b6b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    p {
+      text-align: center;
+      color: $text-gray;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    padding: 40px 0;
+    
+    .login-container {
+      padding: 0 15px;
+      
+      h1 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+      }
+      
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+}

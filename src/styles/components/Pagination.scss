@@ -1,0 +1,252 @@
+@import '../variables.scss';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 60px 0;
+  flex-wrap: wrap;
+
+  .pagination-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px 32px;
+    background: linear-gradient(145deg, $background-card, #1a1a1a);
+    color: $text-light;
+    border: 1px solid rgba($border-color, 0.6);
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    font-size: 1.3rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    &:hover:not(:disabled) {
+      background: linear-gradient(145deg, $background-hover, #2a2a2a);
+      color: $text-light;
+      border-color: $primary-color;
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    }
+    
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    svg {
+      fill: currentColor;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .pagination-numbers {
+    display: flex;
+    gap: 15px;
+
+    .pagination-number {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, $background-card, #1a1a1a);
+      color: $text-light;
+      border: 1px solid rgba($border-color, 0.6);
+      border-radius: 12px;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      font-size: 1.3rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+
+      &:hover:not(:disabled):not(.active):not(.dots) {
+        background: linear-gradient(145deg, $background-hover, #2a2a2a);
+        color: $text-light;
+        border-color: $primary-color;
+        transform: translateY(-8px) scale(1.1);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      }
+      
+      &:active:not(:disabled):not(.active):not(.dots) {
+        transform: translateY(0);
+      }
+
+      &.active {
+        background: linear-gradient(135deg, $primary-color, #ff6b6b);
+        color: $text-light;
+        border-color: $primary-color;
+        box-shadow: 0 8px 16px rgba(255, 107, 107, 0.4);
+        transform: translateY(-5px) scale(1.05);
+      }
+
+      &.dots {
+        background: transparent;
+        border: none;
+        cursor: default;
+        color: $text-gray;
+        box-shadow: none;
+        transform: none;
+        font-size: 1.5rem;
+        font-weight: 800;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: 1440px) {
+    margin: 55px 0;
+    gap: 18px;
+    
+    .pagination-btn {
+      padding: 16px 30px;
+      font-size: 1.2rem;
+      border-radius: 11px;
+      gap: 13px;
+      
+      svg {
+        width: 22px;
+        height: 22px;
+      }
+    }
+
+    .pagination-numbers {
+      gap: 13px;
+      
+      .pagination-number {
+        width: 55px;
+        height: 55px;
+        font-size: 1.2rem;
+        border-radius: 11px;
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin: 50px 0;
+    gap: 16px;
+    
+    .pagination-btn {
+      padding: 15px 28px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      gap: 12px;
+      
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .pagination-numbers {
+      gap: 12px;
+      
+      .pagination-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.1rem;
+        border-radius: 10px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    margin: 45px 0;
+    gap: 14px;
+    
+    .pagination-btn {
+      padding: 14px 26px;
+      font-size: 1.05rem;
+      border-radius: 9px;
+      gap: 11px;
+      
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    .pagination-numbers {
+      gap: 10px;
+      
+      .pagination-number {
+        width: 47px;
+        height: 47px;
+        font-size: 1.05rem;
+        border-radius: 9px;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    margin: 40px 0;
+    gap: 12px;
+    
+    .pagination-btn {
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 8px;
+      gap: 10px;
+      
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    .pagination-numbers {
+      gap: 8px;
+      
+      .pagination-number {
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  @media (max-width: 360px) {
+    margin: 35px 0;
+    gap: 10px;
+    
+    .pagination-btn {
+      padding: 10px 22px;
+      font-size: 0.95rem;
+      border-radius: 7px;
+      gap: 8px;
+      
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    .pagination-numbers {
+      gap: 6px;
+      
+      .pagination-number {
+        width: 40px;
+        height: 40px;
+        font-size: 0.95rem;
+        border-radius: 7px;
+      }
+    }
+  }
+}

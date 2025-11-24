@@ -1,0 +1,113 @@
+@import '../variables.scss';
+
+.search-results {
+  padding: 30px 0;
+
+  .search-header {
+    margin-bottom: 30px;
+
+    .page-title {
+      font-size: 2rem;
+      color: $text-light;
+      margin: 0;
+    }
+  }
+
+  .error-message {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: $background-card;
+    border-radius: $border-radius;
+    margin: 20px 0;
+
+    h2 {
+      color: $text-light;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: $text-gray;
+      margin-bottom: 20px;
+    }
+
+    .retry-button {
+      padding: 12px 24px;
+      background-color: $primary-color;
+      color: $text-light;
+      border-radius: $border-radius;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: background-color $transition-fast;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $primary-hover;
+      }
+    }
+  }
+
+  .results-info {
+    margin-bottom: 20px;
+    color: $text-gray;
+    font-size: 1.1rem;
+  }
+
+  .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+
+    @media (max-width: $breakpoint-xl) {
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 25px;
+    }
+
+    @media (max-width: $breakpoint-lg) {
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 20px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 15px;
+    }
+
+    @media (max-width: $breakpoint-xs) {
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 15px;
+    }
+
+    @media (max-width: $breakpoint-xxs) {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 10px;
+    }
+
+    @media (max-width: $breakpoint-min) {
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 10px;
+    }
+  }
+
+  .no-results, .no-query {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: $background-card;
+    border-radius: $border-radius;
+
+    h2 {
+      color: $text-light;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: $text-gray;
+    }
+  }
+}

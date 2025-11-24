@@ -1,0 +1,43 @@
+// Colors
+$background-dark: #121212;
+$background-darker: #0a0a0a;
+$background-card: #1e1e1e;
+$background-hover: #2a2a2a;
+$text-light: #ffffff;
+$text-gray: #b3b3b3;
+$text-muted: #888888;
+$primary-color: #e50914;
+$primary-hover: #f40612;
+$border-color: #333333;
+
+// Additional colors for gradients and accents
+$accent-blue: #1e90ff;
+$accent-green: #1db954;
+$accent-yellow: #ffc107;
+$accent-orange: #ff6b6b;
+$accent-purple: #9400d3;
+
+// Sizes
+$header-height: 70px;
+$footer-height: 60px;
+$container-max-width: 1400px;
+$border-radius: 8px;
+
+// Shadows
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+$box-shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.7);
+$box-shadow-large: 0 8px 24px rgba(0, 0, 0, 0.8);
+
+// Transitions
+$transition-fast: 0.2s ease;
+$transition-medium: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Breakpoints
+$breakpoint-xl: 1440px;
+$breakpoint-lg: 1200px;
+$breakpoint-md: 1024px;
+$breakpoint-sm: 768px;
+$breakpoint-xs: 480px;
+$breakpoint-xxs: 360px;
+$breakpoint-min: 320px;

@@ -1,0 +1,41 @@
+// Main SCSS file - import all component styles
+
+// Base styles
+@import './variables';
+@import './reset';
+
+// Component styles
+@import './components/Header';
+@import './components/HeaderMobile';
+@import './components/Footer';
+@import './components/MovieCard';
+@import './components/SkeletonCard';
+@import './components/Loader';
+@import './components/Carousel';
+@import './components/FilterBar';
+@import './components/Pagination';
+@import './components/TrailerModal';
+@import './components/SearchBar';
+@import './components/AuthForm';
+
+// Page styles
+@import './pages/Home';
+@import './pages/MovieCatalog';
+@import './pages/MoviePage';
+@import './pages/Favorites';
+@import './pages/SearchResults';
+@import './pages/NotFound';
+@import './pages/Profile';
+
+// Layout
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  padding-top: $header-height;
+  padding-bottom: $footer-height;
+}
