@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, RouterProvider } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import Home from './pages/Home';
 import MovieCatalog from './pages/MovieCatalog';
@@ -14,6 +14,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Layout from './components/Layout';
 import './styles/App.scss';
+import { router } from './router';
 
 // Simple title updater hook
 const useTitle = (title) => {
@@ -22,107 +23,113 @@ const useTitle = (title) => {
 
 function App() {
   return (
-    <Router>
+    // <Router>
+    //   <AuthProvider>
+    //     <Layout>
+    //       <Routes>
+    //         <Route 
+    //           path="/" 
+    //           element={
+    //             <>
+    //               {useTitle('Онлайн Кинотеатр - Главная')}
+    //               <Home />
+    //             </>
+    //           }
+    //         />
+    //         <Route 
+    //           path="/movies" 
+    //           element={
+    //             <ProtectedRoute>
+    //               <>
+    //                 {useTitle('Каталог фильмов - Онлайн Кинотеатр')}
+    //                 <MovieCatalog />
+    //               </>
+    //             </ProtectedRoute>
+    //           } 
+    //         />
+    //         <Route 
+    //           path="/movie/:id" 
+    //           element={
+    //             <ProtectedRoute>
+    //               <>
+    //                 {useTitle('Фильм - Онлайн Кинотеатр')}
+    //                 <MoviePage />
+    //               </>
+    //             </ProtectedRoute>
+    //           } 
+    //         />
+    //         <Route 
+    //           path="/favorites" 
+    //           element={
+    //             <ProtectedRoute>
+    //               <>
+    //                 {useTitle('Избранное - Онлайн Кинотеатр')}
+    //                 <Favorites />
+    //               </>
+    //             </ProtectedRoute>
+    //           } 
+    //         />
+    //         <Route 
+    //           path="/search" 
+    //           element={
+    //             <ProtectedRoute>
+    //               <>
+    //                 {useTitle('Поиск - Онлайн Кинотеатр')}
+    //                 <SearchResults />
+    //               </>
+    //             </ProtectedRoute>
+    //           } 
+    //         />
+    //         <Route 
+    //           path="/login" 
+    //           element={
+    //             <>
+    //               {useTitle('Вход - Онлайн Кинотеатр')}
+    //               <LoginPage />
+    //             </>
+    //           } 
+    //         />
+    //         <Route 
+    //           path="/profile" 
+    //           element={
+    //             <ProtectedRoute>
+    //               <>
+    //                 {useTitle('Профиль - Онлайн Кинотеатр')}
+    //                 <ProfilePage />
+    //               </>
+    //             </ProtectedRoute>
+    //           } 
+    //         />
+    //         <Route 
+    //           path="/history" 
+    //           element={
+    //             <ProtectedRoute>
+    //               <>
+    //                 {useTitle('История просмотров - Онлайн Кинотеатр')}
+    //                 <History />
+    //               </>
+    //             </ProtectedRoute>
+    //           } 
+    //         />
+    //         <Route 
+    //           path="*" 
+    //           element={
+    //             <>
+    //               {useTitle('Страница не найдена - Онлайн Кинотеатр')}
+    //               <NotFound />
+    //             </>
+    //           } 
+    //         />
+    //       </Routes>
+    //     </Layout>
+    //   </AuthProvider>
+    // </Router>
+    <>
       <AuthProvider>
-        <Layout>
-          <Routes>
-            <Route 
-              path="/" 
-              element={
-                <>
-                  {useTitle('Онлайн Кинотеатр - Главная')}
-                  <Home />
-                </>
-              } 
-            />
-            <Route 
-              path="/movies" 
-              element={
-                <ProtectedRoute>
-                  <>
-                    {useTitle('Каталог фильмов - Онлайн Кинотеатр')}
-                    <MovieCatalog />
-                  </>
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/movie/:id" 
-              element={
-                <ProtectedRoute>
-                  <>
-                    {useTitle('Фильм - Онлайн Кинотеатр')}
-                    <MoviePage />
-                  </>
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/favorites" 
-              element={
-                <ProtectedRoute>
-                  <>
-                    {useTitle('Избранное - Онлайн Кинотеатр')}
-                    <Favorites />
-                  </>
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/search" 
-              element={
-                <ProtectedRoute>
-                  <>
-                    {useTitle('Поиск - Онлайн Кинотеатр')}
-                    <SearchResults />
-                  </>
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/login" 
-              element={
-                <>
-                  {useTitle('Вход - Онлайн Кинотеатр')}
-                  <LoginPage />
-                </>
-              } 
-            />
-            <Route 
-              path="/profile" 
-              element={
-                <ProtectedRoute>
-                  <>
-                    {useTitle('Профиль - Онлайн Кинотеатр')}
-                    <ProfilePage />
-                  </>
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/history" 
-              element={
-                <ProtectedRoute>
-                  <>
-                    {useTitle('История просмотров - Онлайн Кинотеатр')}
-                    <History />
-                  </>
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="*" 
-              element={
-                <>
-                  {useTitle('Страница не найдена - Онлайн Кинотеатр')}
-                  <NotFound />
-                </>
-              } 
-            />
-          </Routes>
-        </Layout>
+
+        <RouterProvider router={router} />
       </AuthProvider>
-    </Router>
+    </>
   );
 }
 
