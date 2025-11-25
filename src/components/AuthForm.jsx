@@ -17,7 +17,7 @@ const AuthForm = () => {
     e.preventDefault()
     setError('')
     setLoading(true)
-
+ 
     try {
       if (isSignUp) {
         const { error } = await signUp(email, password)
